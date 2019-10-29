@@ -1,9 +1,19 @@
-import React, {Component} from 'react';
+import React from "react";
 
-export default class App extends Component{
-  render() {
-    return (
-      <div></div>
-    )
-  }
-}
+const App: React.FC = () => {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div
+          style={{
+            width: "3.75rem",
+            height: "3.75rem",
+            background: "#aaaaaa"
+          }}
+        ></div>
+      </header>
+    </div>
+  );
+};
+
+export default App;

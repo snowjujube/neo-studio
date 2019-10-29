@@ -1,0 +1,14 @@
+{
+  "name": "neo-studio",
+  "version": "0.0.1",
+  "description": "neo studio mvp version",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jujube",
+  "license": "ISC",
+  "dependencies": {
+    "create-react-app": "^3.2.0"
+  }
+}

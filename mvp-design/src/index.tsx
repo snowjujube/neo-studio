@@ -1,7 +1,8 @@
-import React, {PureComponent} from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App.jsx';
-import './lib/stylesheet/base.scss';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.scss";
+import "./lib/stylesheet/base.scss";
+import "./lib/flexibility.js";
 
-ReactDOM.render((<App/>), document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));

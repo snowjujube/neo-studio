@@ -3,4 +3,4 @@
 **/thrift_idl/*
 static/
 output/
-src/common/utils
+src/lib/

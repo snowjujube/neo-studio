@@ -1,16 +1,29 @@
-import React, { DOMElement } from "react";
+import React from "react";
 import "./index.scss";
 import copyright from "./assets/copyright.svg";
 import name from "./assets/name.png";
 import cube from "./assets/neon-cube.png";
 import weibo from "./assets/weibo.svg";
 
-export default class Navigation1 extends React.Component {
+class InitialNavigation extends React.Component<InitialNavigationProps> {
+  static defaultProps = {
+    title: "NEOTAPE",
+    headerLink: "xxx",
+    weiboLink: "xxx",
+    contactLink: "xxx",
+    list: [
+      {
+        title: "首页",
+        src: "xxx"
+      }
+    ]
+  };
+
   readonly state = {
     open: false
   };
 
-  constructor(props: any) {
+  constructor(props: Readonly<InitialNavigationProps>) {
     super(props);
   }
 
@@ -24,8 +37,9 @@ export default class Navigation1 extends React.Component {
 
   render() {
     const { open } = this.state;
+    const { title, headerLink, weiboLink, contactLink, list } = this.props;
     return (
-      <div>
+      <div className="initial-navigation">
         <header id="head" className={open ? "open" : ""}>
           <div className="common">
             <span className="ly-flex">
@@ -33,7 +47,7 @@ export default class Navigation1 extends React.Component {
                 <img src={copyright} alt="C" />
               </div>
               <div className="main">
-                <a href="http://neotape.live/">NEOTAPE.LIVE</a>
+                <a href={headerLink}>{title}</a>
               </div>
             </span>
           </div>
@@ -49,42 +63,20 @@ export default class Navigation1 extends React.Component {
               <div className="main">
                 <nav>
                   <ul>
-                    <li>
-                      <a
-                        className={
-                          open
-                            ? `fade-in fade-nav fade-delay01`
-                            : "fade-nav fade-delay01"
-                        }
-                        href="#"
-                      >
-                        时间表
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className={
-                          open
-                            ? `fade-in fade-nav fade-delay02`
-                            : "fade-nav fade-delay02"
-                        }
-                        href="#"
-                      >
-                        成员
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className={
-                          open
-                            ? `fade-in fade-nav fade-delay03`
-                            : "fade-nav fade-delay03"
-                        }
-                        href="#"
-                      >
-                        合作
-                      </a>
-                    </li>
+                    {list.map((item, index) => (
+                      <li key={index + item.title}>
+                        <a
+                          className={
+                            open
+                              ? `fade-in fade-nav fade-delay0${index + 1}`
+                              : `fade-nav fade-delay0${index + 1}`
+                          }
+                          href={item.src}
+                        >
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </nav>
               </div>
@@ -104,32 +96,38 @@ export default class Navigation1 extends React.Component {
               <nav>
                 <ul>
                   <li>
-                    <a href="#">
+                    <a href={weiboLink}>
                       <img
                         src={weibo}
                         style={{
-                          width: ".4rem",
-                          height: ".4rem"
+                          width: "1.5rem",
+                          height: "1.5rem"
                         }}
                         alt="Weibo"
                       />
                     </a>
                   </li>
                   <li>
-                    <a href="#">contact</a>
+                    <a href={contactLink}>contact</a>
                   </li>
                 </ul>
               </nav>
             </div>
           </div>
           <span
-            onClick={this.toggle}
+            onClick={this.toggle.bind(this)}
             className={open ? "open" : ""}
             id="hamburger"
-          ></span>
+          >
+            {/*查看详情btn*/}
+          </span>
         </header>
-        <span onClick={this.toggle} className="mask"></span>
+        <span onClick={this.toggle.bind(this)} className="mask">
+          {/*蒙层mask*/}
+        </span>
       </div>
     );
   }
 }
+
+export default InitialNavigation;
