@@ -1,0 +1,6 @@
+**/node_modules/*
+**/bower_components/*
+**/thrift_idl/*
+static/
+output/
+src/common/utils
